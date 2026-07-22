@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agi-gauntlet"
+version = "0.1.0"
+description = "A neuro-symbolic evaluation benchmark and lifecycle framework for AGI development."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Ananya Soni", email = "ananya@example.com" }
+]
+keywords = ["agi", "benchmark", "llm", "neuro-symbolic", "evaluation"]
+dependencies = [
+    "fastapi>=0.100.0",
+    "pydantic>=2.0.0",
+    "httpx>=0.24.0",
+    "uvicorn>=0.22.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/agi-gauntlet"
