@@ -6,73 +6,80 @@
   
   [![PyPI Version](https://img.shields.io/pypi/v/agi-gauntlet.svg)](https://pypi.org/project/agi-gauntlet/)
   [![Python Versions](https://img.shields.io/pypi/pyversions/agi-gauntlet.svg)](https://pypi.org/project/agi-gauntlet/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 </div>
 
-**© 2026 AGI Systems Directorate. Authored by Ananya Soni, Founder & CEO.**
+**© 2026 AGI Systems Directorate.**
+**Authored by Ananya Soni, Founder & CEO.**
 
 ---
 
+> "In the age of recursive self-correction, compute is cheap, but verifiable logic is the ultimate bottleneck."
+
 ## The Contamination Crisis
 
-The current landscape of open-source artificial intelligence benchmarking is structurally compromised. Standardized tests like MMLU, HumanEval, and traditional logic benchmarks have become training targets. Large Language Models (LLMs) consistently ingest fragments, discussions, and variations of these exact evaluation prompts during their pre-training phases. 
+The current landscape of open-source artificial intelligence benchmarking is structurally compromised. Standardized evaluations (MMLU, HumanEval, standard logic suites) have inevitably become pre-training targets. When a large language model (LLM) solves a complex reasoning task today, it is rarely demonstrating emergent intelligence; it is executing high-dimensional curve fitting on memorized test data. 
 
-When a model solves a complex reasoning task on these platforms, it is rarely demonstrating emergent intelligence; it is demonstrating high-dimensional curve fitting and retrieval. The "reasoning" is a synthesized mirage built on contaminated pre-training data.
-
-**AGI Gauntlet** is built differently.
+**AGI Gauntlet** is engineered to bypass latent space memorization entirely. 
 
 ## Zero-Contamination Progressive Benchmarking
 
-This package introduces a fundamentally new paradigm for evaluating AI models. The prompts and logic constraints embedded within the Gauntlet **do not exist on the open web**. They have never been indexed, they are not part of any existing dataset, and they are dynamically obfuscated within the package source code to prevent casual scraping by web crawlers.
+This package introduces a fundamentally rigorous paradigm for evaluating and orchestrating AI models. The logical constraints and evaluation matrices embedded within the Gauntlet **do not exist on the open web**. They are dynamically obfuscated at the source level to prevent crawler ingestion.
 
-The Gauntlet is a progressive evaluation matrix:
-1. **Foundational Verification:** Begins with standard cognitive and agentic constraints that any competent model should handle.
-2. **Dynamic Plasticity:** Introduces shifting logical rules and constraint adaptation (e.g., altering the definition of fundamental constants or linguistic operators mid-prompt).
-3. **The Nightmare Gates:** Pushes models into extreme multi-domain synthesis, temporal resource poverty, and recursive meta-logic. If a model passes the final gates without a neuro-symbolic architecture or active memory integration, it is an anomaly.
+The framework enforces a progressive cognitive stress-test:
+1. **Foundational Verification:** Establishes baselines for spatial, temporal, and economic reasoning.
+2. **Dynamic Plasticity:** Injects real-time semantic shifts (e.g., redefining fundamental constants mid-inference) to break standard transformer next-token prediction loops.
+3. **Neuro-Symbolic Synthesis:** Forces models to operate under severe temporal resource poverty, multi-actor paradoxes, and recursive logic structures.
 
-## Core Capabilities
+## What's New in v0.1.1
 
-While `agi-gauntlet` serves primarily as an uncompromising benchmark, it is engineered to be the foundation for an entire AI project lifecycle. 
+The `0.1.1` release transforms `agi-gauntlet` from a strict benchmark into a comprehensive lifecycle and agentic workflow engine:
 
-* **The Obfuscated Vault:** Evaluation prompts are shielded. Models must rely on actual zero-shot inference, not latent space memorization.
-* **Dynamic Model Registry:** Bring your own compute. The framework does not lock you into specific providers. Easily plug in cloud APIs, local Hugging Face pipelines, or custom Gradio endpoints.
-* **Lifecycle Hooks (Experimental):** Early-stage architectural stubs for full lifecycle management, allowing you to bridge the gap between evaluation, dataset injection, and eventual model training in future releases.
+* **Universal Model Hooks:** Seamlessly connect frontier commercial models (via API keys), self-hosted Gradio clients, or custom private server endpoints using the new `ModelRegistry` architecture.
+* **Agentic Workspace:** A dedicated environment to plug in autonomous AI assistants, granting them tool access to manage data parsing and evaluation pipelines.
+* **Lifecycle Manager:** Stage and fetch curated datasets across remote, secure endpoints to seamlessly transition from evaluation to fine-tuning.
+* **Test-Time Compute Guardrail:** An advanced 2026 monitoring feature that analyzes semantic entropy during Monte Carlo Tree Search (MCTS). It forces a deterministic circuit-break if a multi-agent loop enters a hallucinated self-correction spiral, saving compute and preventing silent failures.
 
 ## Quickstart
 
 Install the package via pip:
 
-    pip install agi-gauntlet
+```bash
+pip install agi-gauntlet
+```
 
-Integrate your own models and execute the Gauntlet in less than 15 lines of code:
+Integrate your infrastructure and execute evaluations cleanly:
 
-    from agi_gauntlet import ModelRegistry, GauntletEngine
+```python
+import os
+from agi_gauntlet import ModelRegistry, GauntletEngine, AgentWorkspace
 
-    registry = ModelRegistry()
+registry = ModelRegistry()
 
-    # 1. Connect any standard API endpoint
-    registry.register_api_endpoint(
-        name="cloud_model_alpha", 
-        url="https://api.example.com/v1/generate", 
-        auth_env_var="API_KEY",
-        is_judge=False
-    )
+# 1. Connect a Frontier Commercial Model
+registry.register_commercial_api(
+    name="frontier_model_alpha",
+    provider="anthropic",
+    api_key=os.getenv("ANTHROPIC_API_KEY")
+)
 
-    # 2. Or connect your own custom local functions
-    async def local_judge(prompt: str) -> str:
-        # Your local inference logic here
-        return "PASS"
+# 2. Connect a custom Gradio hosted model
+registry.register_gradio_client(
+    name="local_qwen_instance", 
+    gradio_url="http://localhost:7860", 
+    fn_index=0
+)
 
-    registry.register_custom_function("local_evaluator", local_judge, is_judge=True)
+# 3. Initialize the Engine and Agent Workspace
+workspace = AgentWorkspace()
+workspace.plug_agent(agent_id="eval_orchestrator", tools_granted=["database_read", "run_gauntlet"])
 
-    # 3. Initialize and serve the execution engine
-    engine = GauntletEngine(registry)
-    engine.serve(port=8000)
-
-*(Note: For advanced lifecycle features, dataset hooks, and full neuro-symbolic evaluation pipelines, refer to the core source code.)*
+engine = GauntletEngine(registry)
+engine.serve(port=8000)
+```
 
 ## Contributing
 
-The pursuit of Artificial General Intelligence is a collaborative imperative. `agi-gauntlet` is open source, and architectural contributions, new evaluation gates, and framework optimizations are welcome. 
+The pursuit of Artificial General Intelligence is a collaborative imperative. `agi-gauntlet` is open source, and architectural contributions, new evaluation matrices, and framework optimizations are welcome. 
 
-Please review the open issues on our GitHub Repository before submitting a pull request. Keep your code clean, your logic sound, and leave the contaminated benchmarks in the past.
+Please review the open issues on our GitHub Repository before submitting a pull request. Keep your code modular, ensure logical determinism, and leave contaminated benchmarks in the past.
