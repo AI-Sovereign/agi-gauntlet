@@ -1,4 +1,3 @@
-
 # agi_gauntlet/__init__.py
 from .core import (
     GauntletEngine,
@@ -18,4 +17,4 @@ __all__ = [
     "GauntletSyntaxError"
 ]
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
