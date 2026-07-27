@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "agi-gauntlet"
-version = "0.1.1"
+version = "0.1.2"
 description = "A neuro-symbolic evaluation suite and lifecycle manager for AI agents and AGI development."
 readme = "README.md"
 requires-python = ">=3.9"
